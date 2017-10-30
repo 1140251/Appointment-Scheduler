@@ -1,61 +1,27 @@
-'use strict'
-// Set up ======================================================================
-let http = require('http')
-let express = require('express')
-let app = exports.app = express()
-let morgan = require('morgan')
-let bodyParser = require('body-parser')
-let methodOverride = require('method-override')
-let api = require('./app/routes')
-let db = require('./config/database')
-let server = http.Server(app)
+// set up ======================================================================
+var express = require('express');
+var app = express(); 						// create our app w/ express
+var mongoose = require('mongoose'); 				// mongoose for mongodb
+var port = process.env.PORT || 8080; 				// set the port
+var database = require('./config/database'); 			// load the database config
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+// configuration ===============================================================
+mongoose.connect(database.localUrl); 	// Connect to local MongoDB instance. A remoteUrl is also available (modulus.io)
+
+app.use(express.static('./public')); 		// set the static files location /public/img will be /img for users
+app.use(morgan('dev')); // log every request to the console
+app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
+app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
+app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
 
-let seo = require('./app/middlewares/seo')
-app.use(seo)
+// routes ======================================================================
+require('./app/routes.js')(app);
 
-// Express =====================================================================
-app.use(express.static(__dirname + '/public'))
-app.use(morgan('dev'))
-
-app.use(bodyParser.urlencoded({
-    'extended': 'true'
-}))
-app.use(bodyParser.json())
-app.use(bodyParser.json({
-    type: 'application/vnd.api+json'
-}))
-
-app.use(methodOverride('X-HTTP-Method-Override'))
-
-app.use((request, response, next) => {
-    response.header('Access-Control-Allow-Credentials', true)
-    response.header('Access-Control-Allow-Origin', request.headers.origin)
-    response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    response.header('Access-Control-Allow-Headers', 'X-ACCESS_TOKEN, Access-Control-Allow-Origin, Authorization, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
-    next()
-})
-
-app.use('/api', api(app))
-
-app.use((error, request, response, next) => {
-    // Middleware to catch all errors
-    console.error(error.stack)
-    response.status(500).send(error.message)
-})
-
-exports.startServer = (port, path, callback) => {
-    db((err) => {
-        if (err) {
-            console.error(err.stack)
-        } else {
-            process.on('SIGINT', function() {
-                console.log("\nStopping...")
-                process.exit()
-            });
-
-            server.listen(process.env.PORT || port, callback)
-            console.log(`server listening on port ${port}`)
-        }
-    })
-}
+// listen (start app with node server.js) ======================================
+app.listen(port);
+console.log("App listening on port " + port);

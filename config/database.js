@@ -1,10 +1,4 @@
-/* -------------------------------- *\
-	 				    DATABASE
-\* -------------------------------- */
-'use strict'
-let mongoose = require('mongoose')
-const ENV = require('./env')
-
-module.exports = (callback) => {
-	mongoose.connect(ENV.db, callback)
-}
+module.exports = {
+    remoteUrl : 'mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu',
+    localUrl: 'mongodb://localhost/meanstacktutorials'
+};
