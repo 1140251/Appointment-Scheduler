@@ -7,7 +7,7 @@ npm-debug.log*
 TODO.md
 .idea/
 .idea/workspace.xml
-
+.idea/*
 # User-specific stuff:
 .idea/**/tasks.xml
 .idea/dictionaries

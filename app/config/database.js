@@ -1,12 +1,12 @@
 module.exports = {
   development: {
-    dbUrl: 'mongodb://localhost:27017/hmestheticline',
+    mongoDB: 'mongodb://localhost:27017/hmestheticline',
     host: "localhost",
-    port: "8081"
+    port: "8082"
   },
   production: {
-    dbUrl: 'mongodb://localhost:27017/hmestheticline',
+    mongoDB: 'mongodb://localhost:27017/hmestheticline',
     host: "localhost",
-    port: "8081"
+    port: "8082"
   }
 };
