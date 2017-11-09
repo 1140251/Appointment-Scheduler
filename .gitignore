@@ -6,7 +6,7 @@ npm-debug.log*
 .jshintignore
 TODO.md
 .idea/
-
+.idea/workspace.xml
 
 # User-specific stuff:
 .idea/**/tasks.xml
