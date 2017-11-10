@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('../config/mongoose');
-const auth = require('./auth')(mongoose);
+const users = require('./users')(mongoose);
 
 // return server status
 router.get('/health', (req, res) => {
   mongoose.connection.readyState === 1 ? res.status(200).json({status: 'OK'}) : res.status(503).json({status: 'Service Unavailable. Please try again later.'})
 });
+router.use(users);
 
-router.use(auth);
 //
 // function getTodos(res) {
 //   Todo.find(function (err, todos) {
@@ -22,17 +22,17 @@ router.use(auth);
 //   });
 // }
 //
-// module.exports = function (app) {
+// module.exports = function (server) {
 //
 //   // api ---------------------------------------------------------------------
 //   // get all todos
-//   app.get('/api/todos', function (req, res) {
+//   server.get('/api/todos', function (req, res) {
 //     // use mongoose to get all todos in the database
 //     getTodos(res);
 //   });
 //
 //   // create todo and send back all todos after creation
-//   app.post('/api/todos', function (req, res) {
+//   server.post('/api/todos', function (req, res) {
 //
 //     // create a todo, information comes from AJAX request from Angular
 //     Todo.create({
@@ -49,7 +49,7 @@ router.use(auth);
 //   });
 //
 //   // delete a todo
-//   app.delete('/api/todos/:todo_id', function (req, res) {
+//   server.delete('/api/todos/:todo_id', function (req, res) {
 //     Todo.remove({
 //       _id: req.params.todo_id
 //     }, function (err, todo) {
@@ -61,7 +61,7 @@ router.use(auth);
 //   });
 //
 //   // application -------------------------------------------------------------
-//   app.get('*', function (req, res) {
+//   server.get('*', function (req, res) {
 //     res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 //   });
 // };

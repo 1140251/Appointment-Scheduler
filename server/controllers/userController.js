@@ -1,5 +1,7 @@
 module.exports = (mongoose) => {
 
+  mongoose.Promise = global.Promise;
+
   const User = require('../models/user')(mongoose);
   const jwt = require('jsonwebtoken'), bcrypt = require('bcrypt');
 
@@ -61,8 +63,23 @@ module.exports = (mongoose) => {
         } else {
           return res.status(401).json({message: 'Unauthorized user!'});
         }
-      }
+      },
+
+    getUser: (req, res) => {
+      User.findById(req.params.id, (err, user) => {
+        if (err) {
+          return res.sendStatus(404);
+        }
+        res.status(200).send(user);
+      });
+    },
+    getUsers: (req, res) => {
+      User.find({}, (err, users) => {
+        if (err) {
+          return res.sendStatus(404);
+        }
+        res.status(200).send(users);
+      });
+    }
   }
-    ;
-}
-;
+};
