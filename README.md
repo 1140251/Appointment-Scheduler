@@ -1,31 +1,25 @@
-# Node Todo App
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
-A Node app built with MongoDB and Angular. For demonstration purposes and a tutorial.
+## Development server
 
-Node provides the RESTful API. Angular provides the frontend and accesses the API. MongoDB stores like a hoarder.
+Run `ng serve` for a dev server. Navigate to `http://localhost:8082/`. The app will automatically reload if you change any of the source files.
 
-## Requirements
+## Code scaffolding
 
-- [Node and npm](http://nodejs.org)
-- MongoDB: Make sure you have your own local or remote MongoDB database URI configured in `config/database.js`
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Installation
+## Build
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
-2. Install the application: `npm install`
-3. Place your own MongoDB URI in `config/database.js`
-3. Start the server: `node server.js`
-4. View in browser at `http://localhost:8080`
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Tutorial Series
+## Running unit tests
 
-This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Each branch represents a certain tutorial.
-- tut1-starter: [Creating a Single Page Todo App with Node and Angular](https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular)
-- tut2-organization: [Application Organization and Structure](https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure)
-- tut3-services: [Controllers and Services](https://scotch.io/tutorials/node-and-angular-to-do-app-controllers-and-services)
+## Running end-to-end tests
 
-Happy Todo-ing!
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
