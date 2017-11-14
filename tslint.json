@@ -15,8 +15,7 @@
     "forin": true,
     "import-blacklist": [
       true,
-      "rxjs",
-      "rxjs/Rx"
+      "rxjs"
     ],
     "import-spacing": true,
     "indent": [
@@ -30,16 +29,10 @@
       140
     ],
     "member-access": false,
-    "member-ordering": [
+    "member-ordering":  [
       true,
-      {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
-      }
+      "static-before-instance",
+      "variables-before-functions"
     ],
     "no-arg": true,
     "no-bitwise": true,
