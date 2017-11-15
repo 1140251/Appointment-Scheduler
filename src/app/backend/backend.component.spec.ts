@@ -4,11 +4,11 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { HeaderComponent, SidebarComponent } from '../shared';
-import { LayoutComponent } from './layout.component';
+import { BackendComponent } from './backend.component';
 
-describe('LayoutComponent', () => {
-  let component: LayoutComponent;
-  let fixture: ComponentFixture<LayoutComponent>;
+describe('BackendComponent', () => {
+  let component: BackendComponent;
+  let fixture: ComponentFixture<BackendComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,7 +18,7 @@ describe('LayoutComponent', () => {
       TranslateModule.forRoot(),
     ],
       declarations: [
-        LayoutComponent,
+        BackendComponent,
         HeaderComponent,
         SidebarComponent,
       ]
@@ -27,7 +27,7 @@ describe('LayoutComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutComponent);
+    fixture = TestBed.createComponent(BackendComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

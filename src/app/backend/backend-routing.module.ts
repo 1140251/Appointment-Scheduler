@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout.component';
+import { BackendComponent } from './backend.component';
 
 const routes: Routes = [
     {
-        path: '', component: LayoutComponent,
+        path: '', component: BackendComponent,
         children: [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'servicos', loadChildren: './servicos/servicos.module#ChartsModule' },
@@ -22,4 +22,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class LayoutRoutingModule { }
+export class BackendRoutingModule { }
