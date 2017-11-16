@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthService {
@@ -24,4 +25,24 @@ export class AuthService {
       }
     });
   }
+
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwt_decode(token);
+
+    if (decoded.exp === undefined) return null;
+
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    if(!token) token = localStorage.getItem('isLoggedin');
+    if(!token) return true;
+
+    const date = this.getTokenExpirationDate(token);
+    if(date === undefined) return false;
+    return !(date.valueOf() > new Date().valueOf());
+  }
+
 }

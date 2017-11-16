@@ -9,11 +9,9 @@ import { Router } from '@angular/router';
 export class BackendComponent implements OnInit {
 
     constructor(public router: Router) { }
-
-
     ngOnInit() {
-       if (this.router.url === '/') {
-           this.router.navigate(['/dashboard']);
+       if (this.router.url === '/adminDEV') {
+           this.router.navigate(['/adminDEV/dashboard']);
        }
     }
 
