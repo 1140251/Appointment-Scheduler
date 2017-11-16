@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '', component: BackendComponent,
         children: [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'servicos', loadChildren: './servicos/servicos.module#ChartsModule' },
+            { path: 'servicos', loadChildren: './servicos/servicos.module#ChartsModule', canActivate: [] },
             { path: 'cosmetica', loadChildren: './cosmetica/cosmetica.module#TablesModule' },
             { path: 'suplementosAlimentares', loadChildren: './suplementosAlimentares/suplementosAlimentares.module#FormModule' },
             { path: 'aparatologia', loadChildren: './aparatologia/aparatologia.module#BsElementModule' },

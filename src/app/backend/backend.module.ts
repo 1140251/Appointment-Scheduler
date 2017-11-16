@@ -6,7 +6,7 @@ import { AuthGuard } from '../shared';
 import {BackendRoutingModule} from './backend-routing.module';
 import {BackendComponent} from './backend.component';
 import {HeaderComponent, SidebarComponent} from '../shared';
-
+import { AuthService } from '../shared/services/auth/auth.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +19,9 @@ import {HeaderComponent, SidebarComponent} from '../shared';
     HeaderComponent,
     SidebarComponent,
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    AuthService],
 })
 export class BackendModule {
 }

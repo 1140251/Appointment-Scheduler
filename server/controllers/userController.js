@@ -51,19 +51,6 @@ module.exports = (mongoose) => {
         }
       });
     },
-    logout: (req, res) => {
-
-
-    },
-
-    loginRequired:
-      (req, res, next) => {
-        if (req.user) {
-          next();
-        } else {
-          return res.status(401).json({message: 'Unauthorized user!'});
-        }
-      },
 
     getUser: (req, res) => {
       User.findById(req.params.id, (err, user) => {
