@@ -1,23 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { routerTransition } from '../router.animations';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {routerTransition} from '../router.animations';
+import {AuthService} from "../shared/services/auth/auth.service";
+
+class User {
+  constructor(username?: string, password?: string) {
+  }
+}
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    animations: [routerTransition()]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
+  user: User = new User();
+  loading = false;
+  error = '';
+  constructor(private router: Router, private auth: AuthService) {
+  }
 
-    constructor(public router: Router) {
+  ngOnInit() {
+    if (localStorage.getItem('isLoggedin')) {
+      this.router.navigate(['/adminDEV/dashboard'])
     }
+  }
 
-    ngOnInit() {
-    }
-
-    onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
-    }
+  onLogin() {
+    this.auth.login(this.user).subscribe(result => {
+      if (result === true) {
+        // login successful
+        this.router.navigate(['/adminDEV']);
+      } else {
+        // login failed
+        this.error = 'Username or password is incorrect';
+        this.loading = false;
+      }
+    });
+  }
 
 }
