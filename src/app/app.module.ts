@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { AuthService } from './shared/services/auth/auth.service';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { UserService } from './shared/services/user/user.service';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development
@@ -24,6 +25,7 @@ export function HttpLoaderFactory(http: Http) {
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         AppRoutingModule,
         TranslateModule.forRoot({
@@ -32,11 +34,13 @@ export function HttpLoaderFactory(http: Http) {
                 useFactory: HttpLoaderFactory,
                 deps: [Http]
             }
-        })
+        }),
+        AngularFontAwesomeModule
     ],
     providers: [
-      AuthGuard,
-      AuthService],
+        AuthGuard,
+        AuthService,
+        UserService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

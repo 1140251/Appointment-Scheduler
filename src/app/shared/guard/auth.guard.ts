@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { Router } from '@angular/router';
-import {AuthService} from "../services/auth/auth.service";
+import {AuthService} from '../services/auth/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -9,10 +9,11 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router,  private authService: AuthService) { }
 
     canActivate() {
-      console.log(this.router.url);
         if (!this.authService.isTokenExpired()) {
             return true;
         }
+        console.log('passou');
+        console.log();
         this.router.navigate(['/adminDEV/login']);
         return false;
     }

@@ -10,11 +10,10 @@ const routes: Routes = [
   },
   {
     path: 'adminDEV',
-    loadChildren: './backend/backend.module#BackendModule',
-    canActivate: [AuthGuard]
+    loadChildren: './adminDEV/adminDEV.module#AdminDEVModule',
+    // canActivate: [AuthGuard]
   },
-  {path: 'adminDEV/login', loadChildren: './login/login.module#LoginModule'},
-  {path: 'adminDEV/signup', loadChildren: './signup/signup.module#SignupModule'},
+  {path: 'adminDEV/login', loadChildren: './adminDEV/login/login.module#LoginModule'},
   {path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule'},
   {path: '**', redirectTo: 'not-found'}
 ];

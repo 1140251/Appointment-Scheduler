@@ -28,7 +28,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-console.log("App listening on port " + port);
+console.log('App listening on port ' + port);
 
 app.use((req, res, next) => {
   let err = new Error('Service Unavailable. Please try again later.');

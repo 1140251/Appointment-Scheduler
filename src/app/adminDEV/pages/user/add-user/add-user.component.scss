@@ -1,0 +1,21 @@
+.alert-input-error {
+    padding: 0px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+    color: red;
+}
+
+.alert>div:before {
+    content: "*";
+  }
+
+@keyframes alertAnim {
+    from {
+        opacity:0; 
+    }
+    to {
+        opacity:1;
+    }
+}
