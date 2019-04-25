@@ -1,78 +1,18 @@
-.DS_Store
-/bower_components/
-/node_modules/
-npm-debug.log*
-.jshintrc
-.jshintignore
-TODO.md
-.idea/
-.idea/workspace.xml
-.idea/*
-# User-specific stuff:
-.idea/**/tasks.xml
-.idea/dictionaries
 
-# Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-
-# Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
-
-# CMake
-cmake-build-debug/
-
-# Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
-
-## File-based project format:
-*.iws
-
-## Plugin-specific files:
-
-# IntelliJ
-/out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Cursive Clojure plugin
-.idea/replstate.xml
-
-# Ruby plugin and RubyMine
-/.rakeTasks
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
-
-# Sonarlint plugin
-.idea/sonarlint
-
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
+/dist-server
 /tmp
 /out-tsc
+**/dist
 
 # dependencies
 /node_modules
+package-lock.json
+
+**/node_modules
 
 # IDEs and editors
 /.idea
@@ -82,15 +22,25 @@ fabric.properties
 *.launch
 .settings/
 *.sublime-workspace
+.idea
+.idea/
+.idea/*
 
-
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
+**/.sass-cache
 /connect.lock
 /coverage
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 testem.log
 /typings
 
@@ -99,4 +49,6 @@ testem.log
 /e2e/*.map
 
 # System Files
+.DS_Store
 Thumbs.db
+

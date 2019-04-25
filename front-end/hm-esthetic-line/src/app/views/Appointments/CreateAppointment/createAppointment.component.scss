@@ -1,0 +1,110 @@
+div.card > .card-body > .col-lg-12 .hTitle {
+  padding-bottom: 24px;
+}
+
+h4{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1.5em;
+    margin-block-end: 1.5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+input, label{
+    padding-left: 0;
+}
+
+input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+select {
+  font: inherit;
+  border: 1px solid darkgrey;
+  background-color: transparent;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.customer-input {
+  width: 50%;
+}
+
+.title-input {
+  width: 50%;
+}
+
+.datetime-input {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.description-input-container {
+  width: 100%;
+}
+
+.description-textarea {
+  height: 50px;
+}
+
+.room-select {
+  width: 30%;
+}
+
+/deep/ .md2-tag-add {
+  width: 100%; // Required to make the examination's input and suggestions field 100%
+}
+
+.label {
+  color: rgba(black, 0.4);
+}
+
+.description {
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(black, 0.4);
+  margin-left: 10px;
+}
+
+.section-reminders {
+  margin-top: 48px;
+}
+
+.form-control-placeholder.required:after {
+  content: " *";
+  color: red;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 10px 0 0 0px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -75%, 0);
+  opacity: 1;
+}

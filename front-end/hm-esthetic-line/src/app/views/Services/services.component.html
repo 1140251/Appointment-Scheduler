@@ -1,0 +1,34 @@
+<div class="card">
+        <div class="card-body">
+            <div class="col-lg-12">
+                <h3>List Services</h3>
+                <br>
+                <div>
+                    <button class="btn btn-outline-primary  mr-1" (click)="listServices()">List Services</button>
+                    <button class="btn btn-outline-success" (click)="createService()">Create Service</button>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table *ngIf="servicesList.length > 0" class="table table-striped" style="margin-top:26px">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col"  style="text-align: center"> Edit Info </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let service of servicesList">
+                                    <td>{{customer.name}}</td>
+                                    <td>{{customer.price}}</td>
+                                    <td style="text-align: center"> 
+                                        <!-- <demo-modal-service-nested [service]="service"></demo-modal-service-nested> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
