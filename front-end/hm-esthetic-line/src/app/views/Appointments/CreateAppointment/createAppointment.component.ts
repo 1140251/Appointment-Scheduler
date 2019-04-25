@@ -7,25 +7,41 @@ import swal from 'sweetalert2';
 import { TypeaheadConfig } from 'ngx-bootstrap/typeahead';
 import { CustomerService } from '../../../services/customer.service';
 import { ServiceHtppService } from '../../../services/ServiceHtppService';
+import { NgbDate, NgbModule, NgbTimepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+
 export function getTypeaheadConfig(): TypeaheadConfig {
     return Object.assign(new TypeaheadConfig(), { hideResultsOnBlur: false });
 }
 @Component({
     templateUrl: 'createAppointment.component.html',
     styleUrls: ['./createAppointment.component.scss'],
-    providers: [{ provide: TypeaheadConfig, useFactory: getTypeaheadConfig }]
+    providers: [{ provide: TypeaheadConfig, useFactory: getTypeaheadConfig }, NgbTimepickerConfig]
 })
 
 export class CreateAppointmentComponent {
 
     public newAppointment: Appointment = new Appointment();
 
-    public customers: String[];
-    public services: String[];
+    private model = {
+        id: undefined,
+        title: undefined,
+        description: undefined,
+        startDate: undefined,
+        startTime: undefined,
+        duration: undefined,
+        room: undefined,
+        client: undefined,
+        reminders: undefined
+      };
 
-    constructor(private _myHttp: AppointmentService, private customerService: CustomerService,private serviceHttpService: ServiceHtppService, private _location: Location) {
+      public customers: String[];
+      public services: String[];
+      public roomsList: String[];
 
+    constructor(config: NgbTimepickerConfig, private _myHttp: AppointmentService, private customerService: CustomerService,private serviceHttpService: ServiceHtppService, private _location: Location) {
 
+        config.seconds = false;
+        config.spinners = false;     
         this.customerService.getCustomers().then(
             (customers) => {
                 this.customers = customers.map((filterCustomers) => filterCustomers.name);
@@ -39,7 +55,7 @@ export class CreateAppointmentComponent {
                 this.services = services.map( (service) => service.name);
             },
             (err) => console.log(err)             
-        )       
+        )  
     }
 
     public submit() {
@@ -86,8 +102,6 @@ export class CreateAppointmentComponent {
         }
         return false
     }
-
-
 
     private resetFields() {
         this.newAppointment = new Appointment();
