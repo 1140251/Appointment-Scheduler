@@ -15,6 +15,7 @@ namespace AS.API.Infrastructure
         {
             services.RegisterAllTypes<Room>();
             services.RegisterAllTypes<Appointment>();
+            services.RegisterAllTypes<Employee>();
             services.RegisterAllTypes<Service>();
             services.RegisterAllTypes<Customer>();
 

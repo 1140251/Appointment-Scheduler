@@ -78,6 +78,15 @@ namespace AS.API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Contact")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Customers");
                 });
 
@@ -101,6 +110,15 @@ namespace AS.API.Migrations
                     b.Property<string>("Password");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Contact")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Employee");
                 });

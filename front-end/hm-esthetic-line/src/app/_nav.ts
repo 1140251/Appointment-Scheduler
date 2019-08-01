@@ -21,7 +21,12 @@ export const navItems = [
     {
         name: 'Services',
         url: '/Services',
-        icon: 'icon-home',
+        icon: 'fa fa-user-md',
+    },
+    {
+        name: 'Rooms',
+        url: '/Rooms',
+        icon: 'fa fa-bed',
     },
     {
         name: 'Appointments',

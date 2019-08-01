@@ -1,8 +1,8 @@
 export class Service {
     code: string;
     name: string;
-    Description: string;
-    Price: Number;
+    description: string;
+    price: Number;
 }
 
 export class ServiceResponse {
@@ -10,4 +10,5 @@ export class ServiceResponse {
     name: string;
     Description: string;
     Price: Number;
+    UniversalState: string;
 }

@@ -4,20 +4,26 @@ export class AppointmentResponse {
     description: string;
     start: Date;
     end: Date;
-    serviceName: string;
-    customerName: string;
-    roomName: string;
-    employeeName: string;
+    service: string;
+    customer: string;
+    room: string;
+    employee: string;
 }
 
 export class Appointment {
     code: string;
     title: string;
     description: string;
-    start: Date;
+    start: string;
     duration: string;
-    serviceName: string;
-    customerName: string;
-    roomName: string;
-    employeeName: string;
+    service: string;
+    customer: string;
+    room: string;
+    employee: string;
+}
+
+export class EventCalendar {
+    title: string;
+    start: string;
+    end: string;
 }

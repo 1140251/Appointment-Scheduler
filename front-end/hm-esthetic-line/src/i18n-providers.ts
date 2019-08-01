@@ -1,6 +1,6 @@
 import { TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID, StaticProvider } from '@angular/core';
-
-import * as moment    from 'moment';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import * as moment from 'moment';
 
 declare var navigator: any; // navigator.languages not available yet
 declare const require;
@@ -21,18 +21,17 @@ export function getTranslationProviders(): Promise<StaticProvider[]> {
     return Promise.resolve(noProviders);
   }
 
-// use the require method provided by webpack
-// we use the webpack raw-loader to return the content as a string
-const translationFileContents = require(`raw-loader!./locale/messages.pt.xlf`);
- 
+  // use the require method provided by webpack
+  // we use the webpack raw-loader to return the content as a string
+  const translationFileContents = require(`raw-loader!./locale/messages.pt.xlf`);
+
 
   if (locale.startsWith('pt')) {
     return Promise.resolve([
-        { provide: TRANSLATIONS, useValue: translationFileContents },
-        { provide: TRANSLATIONS_FORMAT, useValue: 'xlf' },
-        { provide: LOCALE_ID, useValue: locale }
-
-      ]);
+      { provide: TRANSLATIONS, useValue: translationFileContents },
+      { provide: TRANSLATIONS_FORMAT, useValue: 'xlf' },
+      { provide: LOCALE_ID, useValue: locale }
+    ]);
   } else {
     return Promise.resolve(noProviders);
   }

@@ -80,9 +80,19 @@ namespace AS.API.Controllers
         /// Get all Services.
         /// </summary>
         [HttpGet]
-        public async Task<IEnumerable<Service>> GetAllService()
+        public async Task<IEnumerable<ServiceResponseDTO>> GetAllService()
         {
-            return await _service.GetAsync();
+            IEnumerable<Service> services = await _service.GetAsync();
+            return services.Select(x => new ServiceResponseDTO
+            {
+                Code = x.Code,
+                Name = x.Name,
+                Description = x.Description,
+                Price = x.Price,
+                UniversalState = x.UniversalState,
+                DateAdded = x.CreatedOn,
+                DateModified = x.ModifiedOn
+            });
         }
     }
 }

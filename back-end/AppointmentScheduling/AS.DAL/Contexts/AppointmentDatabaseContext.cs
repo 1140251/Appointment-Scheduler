@@ -20,10 +20,22 @@ namespace AS.DAL.Contexts
         {
             builder.Entity<Room>()
                 .HasIndex(u => u.Name)
-                .IsUnique();
-            builder.Entity<Service>()
+                .IsUnique();          
+            builder.Entity<Service>() 
                 .HasIndex(u => u.Name)
                 .IsUnique();
+
+            builder.Entity<Customer>(entity => {
+                entity.HasIndex(e => e.Name).IsUnique();
+                entity.HasIndex(e => e.Email).IsUnique();
+                entity.HasIndex(e => e.Contact).IsUnique();
+            });
+
+            builder.Entity<Employee>(entity => {
+                entity.HasIndex(e => e.Name).IsUnique();
+                entity.HasIndex(e => e.Email).IsUnique();
+                entity.HasIndex(e => e.Contact).IsUnique();
+            });
         }
 
 

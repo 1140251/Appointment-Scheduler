@@ -27,6 +27,10 @@ export const routes: Routes = [
                 loadChildren: './views/Services/services.module#ServicesModule',
             },
             {
+                path: 'Rooms',
+                loadChildren: './views/Rooms/rooms.module#RoomsModule',
+            },
+            {
                 path: 'Appointments',
                 loadChildren: './views/Appointments/appointments.module#AppointmentsModule',
             },

@@ -31,7 +31,14 @@ namespace AS.DAL.Repositories
             IQueryable<T> query = _entities;
             if (!String.IsNullOrEmpty(includeProperties))
             {
-                query.Include(includeProperties);
+                string [] properties = includeProperties.Trim().Split(",");
+                foreach (var property in properties)
+                {
+                    if (!String.IsNullOrEmpty(property))
+                    {
+                        query = query.Include(property);
+                    }
+                }
             }
             return await query.ToListAsync();
         }

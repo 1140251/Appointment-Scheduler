@@ -1,0 +1,201 @@
+div.card > .card-body > .col-lg-12 .hTitle {
+  padding-bottom: 24px;
+}
+
+h4 {
+  display: block;
+  font-size: 1.17em;
+}
+input,
+label {
+  padding-left: 0;
+}
+
+input[type="text"],
+select.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+select {
+  font: inherit;
+  border: 1px solid darkgrey;
+  background-color: transparent;
+  margin-top: 16px;
+}
+
+.customer-input {
+  width: 50%;
+}
+
+.duration-input {
+  width: 25%;
+}
+
+.title-input {
+  width: 50%;
+}
+
+.datetime-input {
+  width: 50%;
+}
+
+.description-input-container {
+  width: 100%;
+}
+
+.description-textarea {
+  height: 40px;
+  padding: 0px 0px 10px 0px;
+}
+
+.room-select {
+  width: 30%;
+}
+
+/deep/ .md2-tag-add {
+  width: 100%; // Required to make the examination's input and suggestions field 100%
+}
+
+.label {
+  color: rgba(black, 0.4);
+}
+
+.description {
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(black, 0.4);
+  height: 40px;
+  max-height: 60px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.section-reminders {
+  margin-top: 48px;
+}
+
+.form-control-placeholder.required:after {
+  content: " *";
+  color: red;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 10px 0 0 0px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+
+.form-control:focus + .form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -75%, 0);
+  opacity: 1;
+}
+
+.hidden-label {
+  position: absolute;
+  margin-top: 0.35rem;
+  font-style: italic;
+  pointer-events: none;
+}
+
+.hidden-label.required:after {
+  content: " *";
+  color: red;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.switch input {
+  display: none;
+  background-color: #ccc;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 0px;
+  right: 0px;
+  bottom: -3px;
+  background-color: #fafafa;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+  background-color: #2196f3;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.mat-checkbox-div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+}
+
+.mat-checkbox-label {
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.mat-slide-toggle-content {
+  font-size: 14px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: white !important;
+  background-color: green !important;
+}

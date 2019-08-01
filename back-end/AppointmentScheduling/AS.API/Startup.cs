@@ -12,7 +12,6 @@ using System;
 using AS.DAL.Contexts;
 using AS.API.Infrastructure.Middlewares;
 using AS.API.Infrastructure;
-using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace AS.API
@@ -59,7 +58,6 @@ namespace AS.API
             services.AddHealthChecks()
             // Add a health check for a SQL database
             .AddCheck("PostGres", instance: new HealthCheckService(Configuration.GetConnectionString("PostGreSQLConnection")));
-            services.AddHealthChecksUI();
 
         }
 
@@ -92,12 +90,7 @@ namespace AS.API
             app.UseHttpsRedirection();
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc();
-            app.UseHealthChecks("/api/health", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
-            app.UseHealthChecksUI(config => config.UIPath = "/healthUI");
+            app.UseHealthChecks("/api/health");
         }
     }
 }

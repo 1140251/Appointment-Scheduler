@@ -39,7 +39,6 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { PipeModule } from './pipes/filter.module';
-import {FullCalendarModule} from 'primeng/fullcalendar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
@@ -60,7 +59,6 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     FormsModule,
     HttpClientModule,
     PipeModule.forRoot(),
-    FullCalendarModule,
     TypeaheadModule.forRoot(),
     ModalModule.forRoot()
   ],

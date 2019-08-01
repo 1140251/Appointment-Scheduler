@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AS.DAL.Common;
+using System;
 using System.Collections.Generic;
 
 namespace AS.DAL.Models
@@ -17,15 +18,18 @@ namespace AS.DAL.Models
 
         private Appointment() { }
 
-        public Appointment(string title, string description, DateTime start, DateTime end, Service service, Room room, Employee employee, Customer customer)
+        public Appointment(string title, string description, DateTime start, String duration, Service service, Room room, Employee employee, Customer customer)
         {
             Title = title;
             Description = description;
             Start = start;
-            End = end;
+            TimeZoneInfo tz = TimeZoneInfo.Local;
+            DateTime end = start;
+            End = end.Add(Utils.ParseDuration(duration));
             Service = service;
             Room = room;
             Employee = employee;
+            Customer = customer;
         }
 
 

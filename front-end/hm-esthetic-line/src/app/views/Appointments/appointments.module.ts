@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 
-import {FullCalendarModule} from 'primeng/fullcalendar';
+import {FullCalendarModule, } from 'primeng/fullcalendar';
 import { CreateAppointmentModule } from './CreateAppointment/createAppointment.module';
-// import { DemoModalServiceNestedComponent } from './modal.component'
+// import { DemoModalServieNestedComponent } from './modal.component'
 
 @NgModule({
   imports: [

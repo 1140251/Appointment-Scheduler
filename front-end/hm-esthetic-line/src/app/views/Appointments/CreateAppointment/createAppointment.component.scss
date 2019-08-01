@@ -33,7 +33,6 @@ select {
   font: inherit;
   border: 1px solid darkgrey;
   background-color: transparent;
-  margin-top: 16px;
 }
 
 .customer-input {
@@ -41,7 +40,7 @@ select {
 }
 
 .duration-input {
-  width: 25%;
+  width: 50%;
 }
 
 .title-input {
@@ -105,15 +104,14 @@ select {
 }
 
 .form-control:focus + .form-control-placeholder,
-.form-control:valid + .form-control-placeholder {
+.form-control:valid + .form-control-placeholder,
+.form-control + .form-control-placeholder.test{
   font-size: 75%;
   transform: translate3d(0, -75%, 0);
   opacity: 1;
 }
 
 .hidden-label {
-  position: absolute;
-  margin-top: 0.35rem;
   font-style: italic;
   pointer-events: none;
 }

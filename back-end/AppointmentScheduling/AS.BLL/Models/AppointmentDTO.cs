@@ -9,12 +9,14 @@ namespace AS.BLL.Models
     {
         [Required]
         public string Title { get; set; }
-        [Required]
+
         public string Description { get; set; }
         [Required]
         public DateTime Start { get; set; }
+
         [Required]
-        public DateTime End { get; set; }
+        public string Duration { get; set; }
+
         [Required]
         public String Service { get; set; }
         [Required]
@@ -22,6 +24,18 @@ namespace AS.BLL.Models
         [Required]
         public String Room { get; set; }
         [Required]
+        public String Employee { get; set; }
+    }
+
+    public class AppointmentResponseDTO : BaseResponseModel
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public String Service { get; set; }
+        public String Customer { get; set; }
+        public String Room { get; set; }
         public String Employee { get; set; }
     }
 }

@@ -15,7 +15,8 @@
         EntityNotUpdated = 6,
         ExceededMaxOpenOrders = 7,
         DateIsInvalid = 8,
-        StartDateIsInvalid = 9
+        StartDateIsInvalid = 9,
+        RoomNotAvailable = 10,
         //AuthUserDoesNotExists = 3,
         //AuthWrongCredentials = 4,
         //AuthCannotCreate = 5,

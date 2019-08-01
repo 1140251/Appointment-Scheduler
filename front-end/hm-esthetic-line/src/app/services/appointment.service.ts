@@ -11,6 +11,7 @@ export class AppointmentService {
     constructor(private http: HttpClient) { }
 
     public createAppointment(newAppointment: Appointment) {
+        console.log(newAppointment)
         return this.http.post('https://localhost:5001/api/Appointment/', newAppointment, { observe: 'response' });
     }
 

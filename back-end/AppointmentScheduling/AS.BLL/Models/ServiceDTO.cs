@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using AS.DAL.Common;
 
 namespace AS.BLL.Models
 {
     public class ServiceDTO
     {
         [Required]
-        public string Name { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         [Required]
-        public string Description { get; private set; }
-        [Required]
-        public double Price { get; private set; }
+        public double Price { get; set; }
     }
 
     public class ServiceResponseDTO : BaseResponseModel
@@ -20,5 +20,6 @@ namespace AS.BLL.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
+        public UniversalState UniversalState { get; set; }
     }
 }

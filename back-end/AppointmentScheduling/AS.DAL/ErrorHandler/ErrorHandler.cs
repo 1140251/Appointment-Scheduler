@@ -33,6 +33,8 @@ namespace AS.ErrorHandler
                 case ErrorMessagesEnum.StartDateIsInvalid:
                     return "the start date {0} must be before the end date {1}";
 
+                case ErrorMessagesEnum.RoomNotAvailable:
+                    return "Room not available"; 
                 //case ErrorMessagesEnum.AuthCannotCreate:
                 //    return "Cannot create user";
 

@@ -22,6 +22,7 @@ export class ServicesComponent {
 
         try {
             this._http.getServices().then((servicesList: Array<ServiceResponse>) => {
+                console.log(servicesList[0])
                 this.servicesList = servicesList;
             }).then(res => {
                 this.verifySizeListServices();
@@ -45,6 +46,13 @@ export class ServicesComponent {
             });
         }
     }
+
+    public changeState(code: string) {
+        this._http.disableService(code).then(res => {
+            location.reload();
+        })
+    }
+
 }
 
 

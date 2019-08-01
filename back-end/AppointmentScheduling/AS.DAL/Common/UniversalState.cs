@@ -7,7 +7,6 @@ namespace AS.DAL.Common
     public enum UniversalState
     {
         Active = 0,
-        Disabled = 1,
-        Terminated = 2
+        Disabled = 1
     };
 }

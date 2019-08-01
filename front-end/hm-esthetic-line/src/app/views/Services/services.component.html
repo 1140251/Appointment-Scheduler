@@ -13,16 +13,16 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col"  style="text-align: center"> Edit Info </th>
+                                    <th scope="col">Suggested Price</th>
+                                    <th scope="col"  style="text-align: center"> State Info </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let service of servicesList">
-                                    <td>{{customer.name}}</td>
-                                    <td>{{customer.price}}</td>
+                                    <td>{{service.name}}</td>
+                                    <td>{{service.price}}</td>
                                     <td style="text-align: center"> 
-                                        <!-- <demo-modal-service-nested [service]="service"></demo-modal-service-nested> -->
+                                        <button type="button" class="btn fa-lg fa-3" [ngClass]="service.universalState == 0 ? 'btn-success fa fa-eye' : 'btn-warning fa fa-eye-slash'" (click)="changeState(service.code)"></button>
                                     </td>
                                 </tr>
                             </tbody>
