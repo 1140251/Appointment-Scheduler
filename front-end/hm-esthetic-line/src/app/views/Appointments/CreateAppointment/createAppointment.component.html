@@ -1,0 +1,147 @@
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="submit()" #appointmentForm="ngForm" class="ui form">
+      <div class="col-lg-12">
+        <h3 class="hTitle" i18n>New Appointment</h3>
+        <h4>Customer</h4>
+        <div>
+          <div class="form-group customer-input">
+            <input type="text" id="CustomerName" class="form-control" required="true" [(ngModel)]="selectedCustomer"
+              [typeahead]="customers" [typeaheadScrollable]="true" [typeaheadOptionsInScrollableView]="5"
+              typeaheadOptionField="name" (typeaheadNoResults)="typeaheadNoResults($event)" adaptivePosition="true" 
+              (typeaheadOnSelect)="onSelect($event)" 
+              name="customer" #customer="ngModel"
+              >
+            <label class="form-control-placeholder required" for="CustomerName">Customer</label>
+            <div class="alert alert-danger" *ngIf="noResultCustomer">No Results Found</div>
+            <div *ngIf="customer.invalid && isSubmit" class="alert alert-danger">
+              <div *ngIf="customer.errors.required">
+                Customer is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4>Service</h4>
+        <div>
+          <div class="form-group customer-input">
+            <input type="text" id="ServiceName" class="form-control" required="true" [(ngModel)]="selectedService"
+              [typeahead]="services" adaptivePosition="true" [typeaheadScrollable]="true" [typeaheadOptionsInScrollableView]="5"
+              typeaheadOptionField="name" (typeaheadNoResults)="typeaheadNoResultsServices($event)"
+              (typeaheadOnSelect)="onSelectService($event)"
+              name="service" #service="ngModel"
+              >
+            <label class="form-control-placeholder required" for="ServiceName">Service</label>
+            <div class="alert alert-danger" *ngIf="noResultServices">No Results Found</div>
+            <div *ngIf="service.invalid && isSubmit" class="alert alert-danger">
+              <div *ngIf="service.errors.required">
+                Service is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4>Details</h4>
+        <div>
+          <div class="form-group duration-input">
+            <input type="text" id="duration" class="form-control" required="true" [(ngModel)]="model.duration"
+            pattern="^[0-9]+[H|h][0-9]+[M|m]$|^[0-9]+[M|H|m|h]$" name="duration" id="duration" 
+              #durationRequired="ngModel" #duration
+              >
+            <label class="form-control-placeholder required" [ngClass]="{test: (durationRequired.errors?.pattern && model.duration!=undefined)}" for="TimeDuration">Duration</label>
+            <small id="DurationHelp" class="form-text text-muted">e.g.: 30M, 1H, 1H40M etc.</small>
+            <div *ngIf="durationRequired.invalid && isSubmit" class="alert alert-danger">
+              <div *ngIf="durationRequired.errors.required">
+                Duration is required.
+              </div>
+              <div *ngIf="durationRequired.errors?.pattern"> 
+                Duration not valid.
+             </div>
+            </div>
+          </div>
+
+          <div class="form-group d-flex align-items-center datetime-input">
+            <div class="input-group mr-2">
+              <input class="form-control pl-2" placeholder="Date" name="date" [(ngModel)]="model.startDate"
+                ngbDatepicker #d="ngbDatepicker" required="true" #date="ngModel"
+                >
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary cui-calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+
+            </div>
+            <ngb-timepicker name="time" [(ngModel)]="model.startTime" required="true" #time="ngModel"
+              ></ngb-timepicker>
+            <i class="fa fa-clock-o"></i>
+          </div>
+          <div *ngIf="date.invalid && isSubmit" class="alert alert-danger">
+            <div *ngIf="date.errors.required">
+              Date is required.
+            </div>
+          </div>
+          <div *ngIf="time.invalid && isSubmit" class="alert alert-danger">
+            <div *ngIf="time.errors.required">
+              Time is required.
+            </div>
+          </div>
+
+          <div class="form-group title-input">
+            <input type="text" id="title" class="form-control" required="true" #titleRequired="ngModel"
+              [(ngModel)]="model.title" maxlength="20" name="title" #title>
+            <label class="form-control-placeholder required" for="Title">Title</label>
+            <small id="titleSize" class="form-text text-muted">{{title?.value.length}} / 20</small>
+            <div *ngIf="titleRequired.invalid && isSubmit" class="alert alert-danger">
+              <div *ngIf="titleRequired.errors.required">
+                Title is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group description-input-container">
+            <textarea class="form-control description" maxlength="100" [(ngModel)]="model.description" name="descripion"
+              #description></textarea>
+            <label class="form-control-placeholder description-textarea" for="Description">Description</label>
+            <small id="descriptionSize" class="form-text text-muted">{{description?.value.length}} / 100</small>
+          </div>
+        </div>
+        <div class="form-group room-select">
+          <label class="hidden-label required" for="Room">Room</label>
+          <select class="form-control" id="rooms" aria-placeholder="Room" name="room" required="true"
+            [(ngModel)]="model.room">
+            <option *ngFor="let room of roomsList" [value]="room.code">{{room.name}}</option>
+          </select>
+        </div>
+        <div>
+          <div class="row section-reminders">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="model.reminders" name="reminders" id="reminders">
+              <span class="slider round"></span>
+            </label>
+            <label for="reminders" class="mat-slide-toggle-content">Reminders</label>
+          </div>
+          <div *ngIf="model.reminders">
+            <div class="mat-checkbox-div">
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="model.emailReminder"
+                  name="emailReminder" id="emailReminder" i18n>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-label">Send email reminder</span>
+              </label>
+            </div>
+            <div class="mat-checkbox-div">
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="model.smsReminder" name="smsReminder"
+                  id="smsReminder" i18n>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-label">Send text message reminder </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <div class="float-right">
+        <button class="btn btn-outline-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

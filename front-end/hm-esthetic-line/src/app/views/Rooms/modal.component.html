@@ -1,0 +1,31 @@
+<button type="button" class="btn btn-warning fa fa-pencil fa-lg fa-3" (click)="openModal(template, $event)"></button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Update Room</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeFirstModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form">
+            <div class="form-group">
+                <label>Name</label>
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="room.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control description" maxlength="100" [(ngModel)]="room.description"
+                    name="descripion" #description></textarea>
+                <label class="form-control-placeholder description-textarea" for="Description">Description</label>
+                <small id="descriptionSize" class="form-text text-muted">{{description?.value.length}} / 100</small>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fa fa-save fa-lg" (click)="saveInfo()"> Save</button>
+            <button type="button" class="btn btn-outline-secondary" aria-label="Close"
+                (click)="closeFirstModal()">Cancel</button>
+        </div>
+    </div>
+</ng-template>
